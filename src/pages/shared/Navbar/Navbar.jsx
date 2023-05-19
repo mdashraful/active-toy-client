@@ -1,6 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
+    const { user } = useContext(AuthContext);
+    const { logOut } = useContext(AuthContext)
+
+    const handleSignOut = () => {
+        logOut()
+    }
+
     return (
         <div className="navbar mb-5 w-11/12 mx-auto py-4">
             <div className="navbar-start">
@@ -103,27 +112,24 @@ const Navbar = () => {
                     </li>
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end gap-3">
                 <div className="form-control hidden md:block">
                     <input type="text" placeholder="Search" className="input input-bordered" />
                 </div>
-                <div className="dropdown dropdown-end">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </div>
-                    </label>
-                    <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                        <li>
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
+                {
+                    user ? <div className="dropdown dropdown-end">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img src={user.photoURL} alt="" title={user.displayName} />
+                            </div>
+                        </label>
+                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                            <li><button onClick={handleSignOut}>Logout</button></li>
+                        </ul>
+                    </div> : <Link to='/login' className="btn btn-warning">Login</Link>
+                }
+
+
             </div>
         </div >
     );

@@ -1,8 +1,39 @@
+/* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { useContext, useState } from "react";
 
 const SignUp = () => {
-    const handleSignUp = () => {
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const [error, setError] = useState('');
 
+    const handleSignUp = (event) => {
+        event.preventDefault()
+        setError('')
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        if (password.length < 8) {
+            setError('Password must have at least 8 character');
+            return;
+        }
+
+        createUser(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                updateUserProfile(name, photo)
+                    .then(result => {
+                        form.reset()
+                    })
+                    .catch(error => setError(error.message))
+                console.log(loggedUser)
+            })
+            .catch(error => {
+                setError(error.message)
+            })
     }
     return (
         <div className="hero min-h-screen">
@@ -15,16 +46,16 @@ const SignUp = () => {
                         </div>
                         <form onSubmit={handleSignUp}>
                             <div className="form-control">
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Name</span>
+                                    </label>
+                                    <input type="text" name='name' placeholder="name" className="input input-bordered" />
+                                </div>
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input type="text" name='email' placeholder="email" className="input input-bordered" />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Name</span>
-                                </label>
-                                <input type="text" name='name' placeholder="name" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -38,6 +69,7 @@ const SignUp = () => {
                                 </label>
                                 <input type="password" name="password" placeholder="password" className="input input-bordered" />
                             </div>
+                            <p className='text-error'>{error}</p>
                             <div className="form-control mt-6">
                                 <input className='btn btn-primary' type="submit" value="Sign Up" />
                             </div>
