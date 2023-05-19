@@ -40,7 +40,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/add-a-toy"
+                                to="/add-toy"
                                 className={({ isActive }) =>
                                     isActive ? "active" : ""
                                 }
@@ -92,7 +92,7 @@ const Navbar = () => {
                     </li>
                     <li>
                         <NavLink
-                            to="/add-a-toy"
+                            to="/add-toy"
                             className={({ isActive }) =>
                                 isActive ? "active" : ""
                             }
@@ -128,8 +128,6 @@ const Navbar = () => {
                         </ul>
                     </div> : <Link to='/login' className="btn btn-warning">Login</Link>
                 }
-
-
             </div>
         </div >
     );
