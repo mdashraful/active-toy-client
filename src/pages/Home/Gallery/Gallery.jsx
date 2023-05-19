@@ -1,7 +1,8 @@
 const Gallery = () => {
     return (
         <div className="container mx-auto">
-            <div className="grid-cols-3 p-5 md:p-20 space-y-2 lg:space-y-0 lg:grid lg:gap-3 lg:grid-rows-3">
+            <h2 className="font-bold text-4xl text-center mt-8 md:mt-16 mb-4 md:mb-8 underline">Car Toy Gallery</h2>
+            <div className="grid-cols-3 p-8 md:px-20 space-y-2 lg:space-y-0 lg:grid lg:gap-3 lg:grid-rows-3">
                 <div className="w-full rounded">
                     <img src="https://images.unsplash.com/photo-1598084991519-c90900bc9df0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80"
 
