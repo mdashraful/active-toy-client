@@ -4,7 +4,7 @@
 
 @layer components {
   .active {
-    background: #eccdb4;
-    color: black;
+    background: #3d4451;
+    color: white;
   }
 }

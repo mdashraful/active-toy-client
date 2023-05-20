@@ -1,7 +1,9 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const ToyDetails = () => {
     const toy = useLoaderData();
+    const navigate = useNavigate();
+
     return (
         <div className="w-11/12 mx-auto ">
             <h2 className="font-bold text-4xl text-center my-12 md:my-16 underline">Toy Details</h2>
@@ -17,7 +19,7 @@ const ToyDetails = () => {
                     <p>Available Quantity: {toy.toy_quantity}</p>
                     <p>Seller Name: {toy.toy_description}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Listen</button>
+                        <button className="btn btn-primary" onClick={() => navigate(-1)}>Back</button>
                     </div>
                 </div>
             </div>

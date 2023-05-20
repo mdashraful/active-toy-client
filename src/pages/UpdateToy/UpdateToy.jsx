@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
@@ -7,6 +7,7 @@ const UpdateToy = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const toyUpdate = useLoaderData();
     const [toy, setToy] = useState(toyUpdate)
+    const navigate = useNavigate();
 
     const handleUpdateToy = (data, event) => {
         event.preventDefault()
@@ -22,7 +23,11 @@ const UpdateToy = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                // setToy(data);
+                if (data.modifiedCount > 0) {
+                    alert("Updated Successfully");
+                    setToy(data);
+                    navigate(-1);
+                }
             })
     }
 
@@ -53,7 +58,7 @@ const UpdateToy = () => {
                     </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6 ">
-                    <input type="submit" className="btn btn-warning w-full" value="Add Toy" />
+                    <input type="submit" className="btn btn-warning w-full" value="Update Toy" />
                 </div>
             </form>
         </div>
