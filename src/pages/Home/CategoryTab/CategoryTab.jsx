@@ -1,6 +1,7 @@
 import 'react-tabs/style/react-tabs.css';
 import { useState } from 'react';
 import { Tabs, Tab, TabList, TabPanel } from 'react-tabs';
+import { Link } from 'react-router-dom';
 
 const CategoryTab = ({ toys }) => {
     const [selectedTab, setSelectedTab] = useState(0);
@@ -20,7 +21,7 @@ const CategoryTab = ({ toys }) => {
                 </TabList>
 
                 <TabPanel className="mt-8">
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                    <div className='flex flex-wrap gap-8'>
                         {regularCars.map((toy) => (
                             <div key={toy._id} className="card rounded-none w-96 bg-base-100 shadow-xl">
                                 <figure className="px-10 pt-10">
@@ -28,9 +29,10 @@ const CategoryTab = ({ toys }) => {
                                 </figure>
                                 <div className="card-body items-center text-center">
                                     <h2 className="card-title">{toy.toy_name}</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                                    <p>Price: {toy.toy_price}</p>
+                                    <p>Rating: {toy.toy_rating}</p>
                                     <div className="card-actions">
-                                        <button className="btn btn-primary">Buy Now</button>
+                                        <Link to={`/toys/${toy._id}`} className="btn btn-warning">View Details</Link>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +40,7 @@ const CategoryTab = ({ toys }) => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='flex flex-wrap gap-4'>
+                    <div className='flex flex-wrap gap-8'>
                         {sportsCars.map((toy) => (
                             <div key={toy._id} className="card rounded-none w-96 bg-base-100 shadow-xl">
                                 <figure className="px-10 pt-10">
@@ -46,9 +48,10 @@ const CategoryTab = ({ toys }) => {
                                 </figure>
                                 <div className="card-body items-center text-center">
                                     <h2 className="card-title">{toy.toy_name}</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                                    <p>Price: {toy.toy_price}</p>
+                                    <p>Rating: {toy.toy_rating}</p>
                                     <div className="card-actions">
-                                        <button className="btn btn-primary">Buy Now</button>
+                                        <Link to={`/toys/${toy._id}`} className="btn btn-warning">View Details</Link>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +59,7 @@ const CategoryTab = ({ toys }) => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='flex flex-wrap gap-4'>
+                    <div className='flex flex-wrap gap-8'>
                         {policeCars.map((toy) => (
                             <div key={toy._id} className="card rounded-none w-96 bg-base-100 shadow-xl">
                                 <figure className="px-10 pt-10">
@@ -64,9 +67,10 @@ const CategoryTab = ({ toys }) => {
                                 </figure>
                                 <div className="card-body items-center text-center">
                                     <h2 className="card-title">{toy.toy_name}</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                                    <p>Price: {toy.toy_price}</p>
+                                    <p>Rating: {toy.toy_rating}</p>
                                     <div className="card-actions">
-                                        <button className="btn btn-primary">Buy Now</button>
+                                        <Link to={`/toys/${toy._id}`} className="btn btn-warning">View Details</Link>
                                     </div>
                                 </div>
                             </div>

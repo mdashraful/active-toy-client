@@ -5,7 +5,7 @@ const ToyDetails = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="w-11/12 mx-auto ">
+        <div className="w-11/12 mx-auto">
             <h2 className="font-bold text-4xl text-center my-12 md:my-16 underline">Toy Details</h2>
             <div className="card lg:card-side bg-base-100 shadow-xl p-4 md:p-16">
                 <figure className="w-full md:w-1/3"><img src={toy.toy_photo_url} alt="Album" /></figure>
