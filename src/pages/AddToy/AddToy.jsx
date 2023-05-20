@@ -38,7 +38,7 @@ const AddToy = () => {
     return (
         <div className="w-11/12 mx-auto">
             <h2 className="font-bold text-4xl text-center my-12 md:my-16 underline">Add A Toy</h2>
-            <form onSubmit={handleSubmit(handleAddAToy)} className="w-full border p-16 rounded-lg">
+            <form onSubmit={handleSubmit(handleAddAToy)} className="w-full border p-4 md:p-16 rounded-lg">
                 <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full md:w-1/2 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-seller-name">
