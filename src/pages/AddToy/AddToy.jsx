@@ -1,15 +1,15 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
 
-/* eslint-disable react/no-unescaped-entities */
 const AddToy = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { user } = useContext(AuthContext);
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/all-category`)
+        fetch(`http://localhost:5000/toy-categories`)
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])
@@ -17,11 +17,28 @@ const AddToy = () => {
     const handleAddAToy = (data, event) => {
         event.preventDefault()
         console.log(data);
+
+        fetch(`http://localhost:5000/toys`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    event.target.reset();
+                    alert('Booking completed successfully')
+                }
+            })
     };
 
     return (
         <div className="w-11/12 mx-auto">
-            <form onSubmit={handleSubmit(handleAddAToy)} className="w-full">
+            <h2 className="font-bold text-4xl text-center my-12 md:my-16 underline">Add A Toy</h2>
+            <form onSubmit={handleSubmit(handleAddAToy)} className="w-full border p-16 rounded-lg">
                 <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full md:w-1/2 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-seller-name">
@@ -42,8 +59,8 @@ const AddToy = () => {
                             Category
                         </label>
                         <div className="relative">
-                            <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-toy-subcategory" {...register("toy_subcategory")} required>
-                                <option>Select Toy Car Subcategory</option>
+                            <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-toy-subcategory" {...register("toy_subcategory", { required: true })}>
+                                <option value="" disabled selected>Select Toy Car Subcategory</option>
                                 {
                                     categories.map(category => <option key={category._id} value={category.subcategory}>{category.subcategory
                                     }</option>)
@@ -85,12 +102,11 @@ const AddToy = () => {
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-toy-rating">
                             Rating
                         </label>
-                        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-toy-rating" {...register("toy_rating")} type="number" placeholder="5" max={5} required />
+                        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-toy-rating" name="toy_rating" {...register("toy_rating", { min: 1, max: 5 })} type="number" placeholder="5" min={1} max={5} required />
                         <p className="text-gray-600 text-xs italic">Rating Out of 5</p>
                     </div>
                 </div>
-                <div className="flex flex-wrap -mx-3 mb-6">
-
+                <div className="flex flex-wrap -mx-3 mb-8">
                     <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-toy-photo-url">
                             Description
