@@ -11,7 +11,7 @@ const AllToys = () => {
                 <table className="table w-full">
                     {/* head */}
                     <thead>
-                        <tr className="text-center">
+                        <tr className="">
                             <th>S/N</th>
                             <th>SellerName</th>
                             <th>Toy Name</th>
@@ -24,7 +24,7 @@ const AllToys = () => {
                     <tbody>
                         {
                             allToys.map((toy, index) =>
-                                <tr key={toy._id} className="text-center">
+                                <tr key={toy._id} className="">
                                     <th>{index + 1}</th>
                                     <th>{toy.seller_name}</th>
                                     <td>{toy.toy_name}</td>
@@ -38,7 +38,7 @@ const AllToys = () => {
                     </tbody>
                 </table>
             </div>
-        </div >
+        </div>
     );
 };
 
