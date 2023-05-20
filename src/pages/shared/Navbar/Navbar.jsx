@@ -11,7 +11,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar mb-5 w-11/12 mx-auto py-4 bg-warning">
+        <div className="navbar mb-5 w-full md:w-11/12 mx-auto py-4 bg-warning">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -70,9 +70,9 @@ const Navbar = () => {
                                 Blog
                             </NavLink>
                         </li>
-                        <li className="form-control">
+                        {/* <li className="form-control">
                             <input type="text" placeholder="Search" className="input input-bordered" />
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
                 <Link to={'/'} className="btn btn-ghost normal-case text-3xl font-bold hidden lg:flex">Active Toy</Link>
@@ -81,7 +81,7 @@ const Navbar = () => {
                 <Link to={'/'} className="btn btn-ghost normal-case text-xl">daisyUI</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 space-x-1">
                     <li>
                         <NavLink
                             to="/"
@@ -137,9 +137,9 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-3">
-                <div className="form-control hidden md:block">
+                {/* <div className="form-control hidden md:block">
                     <input type="text" placeholder="Search" className="input input-bordered" />
-                </div>
+                </div> */}
                 {
                     user ? <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
