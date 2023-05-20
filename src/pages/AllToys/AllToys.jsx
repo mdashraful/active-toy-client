@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllToys = () => {
     const allToys = useLoaderData();
@@ -31,14 +31,14 @@ const AllToys = () => {
                                     <td>{toy.toy_subcategory}</td>
                                     <td>$ {toy.toy_price}</td>
                                     <td>{toy.toy_quantity}</td>
-                                    <td><button className="btn btn-warning">View Details</button></td>
+                                    <td><Link to={`/toys/${toy._id}`} className="btn btn-warning">View Details</Link></td>
                                 </tr>
                             )
                         }
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div >
     );
 };
 
