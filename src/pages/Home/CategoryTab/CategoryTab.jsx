@@ -1,25 +1,77 @@
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { useState } from 'react';
+import { Tabs, Tab, TabList, TabPanel } from 'react-tabs';
 
-const CategoryTab = () => {
+const CategoryTab = ({ toys }) => {
+    const [selectedTab, setSelectedTab] = useState(0);
+
+    const regularCars = toys.filter((toy) => toy.toy_subcategory === 'Regular Toy Cars');
+    const sportsCars = toys.filter((toy) => toy.toy_subcategory === 'Sports Toy Cars');
+    const policeCars = toys.filter((toy) => toy.toy_subcategory === 'Police Toy Cars');
+
     return (
-        <div className='container mx-auto p-8 md:px-20'>
+        <div className="container mx-auto p-8 md:px-20">
             <h2 className="font-bold text-4xl text-center my-12 md:my-16 underline">Categories</h2>
-            <Tabs>
+            <Tabs selectedIndex={selectedTab} onSelect={(index) => setSelectedTab(index)}>
                 <TabList>
                     <Tab>Regular Car</Tab>
                     <Tab>Sports Car</Tab>
                     <Tab>Police Car</Tab>
                 </TabList>
 
-                <TabPanel>
-                    <h2>Any content 1</h2>
+                <TabPanel className="mt-8">
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                        {regularCars.map((toy) => (
+                            <div key={toy._id} className="card rounded-none w-96 bg-base-100 shadow-xl">
+                                <figure className="px-10 pt-10">
+                                    <img src={toy.toy_photo_url} />
+                                </figure>
+                                <div className="card-body items-center text-center">
+                                    <h2 className="card-title">{toy.toy_name}</h2>
+                                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                                    <div className="card-actions">
+                                        <button className="btn btn-primary">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content 2</h2>
+                    <div className='flex flex-wrap gap-4'>
+                        {sportsCars.map((toy) => (
+                            <div key={toy._id} className="card rounded-none w-96 bg-base-100 shadow-xl">
+                                <figure className="px-10 pt-10">
+                                    <img src={toy.toy_photo_url} />
+                                </figure>
+                                <div className="card-body items-center text-center">
+                                    <h2 className="card-title">{toy.toy_name}</h2>
+                                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                                    <div className="card-actions">
+                                        <button className="btn btn-primary">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content 2</h2>
+                    <div className='flex flex-wrap gap-4'>
+                        {policeCars.map((toy) => (
+                            <div key={toy._id} className="card rounded-none w-96 bg-base-100 shadow-xl">
+                                <figure className="px-10 pt-10">
+                                    <img src={toy.toy_photo_url} />
+                                </figure>
+                                <div className="card-body items-center text-center">
+                                    <h2 className="card-title">{toy.toy_name}</h2>
+                                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                                    <div className="card-actions">
+                                        <button className="btn btn-primary">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </TabPanel>
             </Tabs>
         </div>
@@ -27,4 +79,5 @@ const CategoryTab = () => {
 };
 
 export default CategoryTab;
+
 
