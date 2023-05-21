@@ -23,7 +23,7 @@ const CategoryTab = ({ toys }) => {
                 <TabPanel className="mt-8">
                     <div className='flex flex-wrap gap-8'>
                         {regularCars.map((toy) => (
-                            <div key={toy._id} className="card rounded-none w-96 bg-base-100 shadow-xl">
+                            <div data-aos="fade-left" data-aos-duration="1500" key={toy._id} className="card rounded-none w-96 bg-base-100 shadow-xl">
                                 <figure className="px-10 pt-10">
                                     <img src={toy.toy_photo_url} />
                                 </figure>
@@ -42,7 +42,7 @@ const CategoryTab = ({ toys }) => {
                 <TabPanel>
                     <div className='flex flex-wrap gap-8'>
                         {sportsCars.map((toy) => (
-                            <div key={toy._id} className="card rounded-none w-96 bg-base-100 shadow-xl">
+                            <div data-aos="fade-left" data-aos-duration="1500" key={toy._id} className="card rounded-none w-96 bg-base-100 shadow-xl">
                                 <figure className="px-10 pt-10">
                                     <img src={toy.toy_photo_url} />
                                 </figure>
@@ -61,7 +61,7 @@ const CategoryTab = ({ toys }) => {
                 <TabPanel>
                     <div className='flex flex-wrap gap-8'>
                         {policeCars.map((toy) => (
-                            <div key={toy._id} className="card rounded-none w-96 bg-base-100 shadow-xl">
+                            <div data-aos="fade-left" data-aos-duration="1500" key={toy._id} className="card rounded-none w-96 bg-base-100 shadow-xl">
                                 <figure className="px-10 pt-10">
                                     <img src={toy.toy_photo_url} />
                                 </figure>
