@@ -13,10 +13,10 @@ const UpdateToy = () => {
         event.preventDefault()
         console.log(data);
 
-        fetch(`http://localhost:5000/toys/${toy._id}`, {
+        fetch(`https://active-toy-server-mdashraful.vercel.app/toys/${toy._id}`, {
             method: "PUT",
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
             },
             body: JSON.stringify(data)
         })

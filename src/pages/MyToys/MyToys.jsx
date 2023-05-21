@@ -9,7 +9,7 @@ const MyToys = () => {
     const handleDelete = id => {
         const proceed = confirm('Are you sure to delete');
         if (proceed) {
-            fetch(`http://localhost:5000/toys/${id}`, {
+            fetch(`https://active-toy-server-mdashraful.vercel.app/toys/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
@@ -24,7 +24,7 @@ const MyToys = () => {
         }
     }
 
-    const url = `http://localhost:5000/my-toys?email=${user?.email}`;
+    const url = `https://active-toy-server-mdashraful.vercel.app/my-toys?email=${user?.email}`;
 
     useEffect(() => {
         fetch(url)

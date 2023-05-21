@@ -9,7 +9,7 @@ const AddToy = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/toy-categories`)
+        fetch(`https://active-toy-server-mdashraful.vercel.app/toy-categories`)
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])
@@ -18,7 +18,7 @@ const AddToy = () => {
         event.preventDefault()
         console.log(data);
 
-        fetch(`http://localhost:5000/toys`, {
+        fetch(`https://active-toy-server-mdashraful.vercel.app/toys`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -30,7 +30,7 @@ const AddToy = () => {
                 console.log(data);
                 if (data.insertedId) {
                     event.target.reset();
-                    alert('Booking completed successfully')
+                    alert('Car Toy Added Successfully!')
                 }
             })
     };

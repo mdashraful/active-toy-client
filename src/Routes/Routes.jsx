@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch(`http://localhost:5000/toys`)
+                loader: () => fetch(`https://active-toy-server-mdashraful.vercel.app/toys`)
             },
             {
                 path: '/signup',
@@ -34,13 +35,13 @@ const router = createBrowserRouter([
             {
                 path: '/all-toys',
                 element: <AllToys></AllToys>,
-                loader: () => fetch(`http://localhost:5000/toys`)
+                loader: () => fetch(`https://active-toy-server-mdashraful.vercel.app/toys`)
 
             },
             {
                 path: '/toys/:id',
                 element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+                loader: ({ params }) => fetch(`https://active-toy-server-mdashraful.vercel.app/toys/${params.id}`)
             },
             {
                 path: '/add-toy',
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
             {
                 path: '/update-toy/:id',
                 element: <PrivateRoute><UpdateToy></UpdateToy></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+                loader: ({ params }) => fetch(`https://active-toy-server-mdashraful.vercel.app/toys/${params.id}`)
             },
             {
                 path: '/blog',
