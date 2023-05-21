@@ -3,9 +3,13 @@ import Banner from "../Banner/Banner";
 import CategoryTab from "../CategoryTab/CategoryTab";
 import Gallery from "../Gallery/Gallery";
 import MarqueeSection from "../Marquee/MarqueeSection";
+import useSetTitle from "../../../hooks/useSetTitle";
 
 const Home = () => {
-    const toys = useLoaderData()
+    const toys = useLoaderData();
+
+    useSetTitle('Home');
+
     return (
         <div>
             <Banner></Banner>

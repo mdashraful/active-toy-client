@@ -1,8 +1,11 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
+import useSetTitle from "../../hooks/useSetTitle";
 
 const ToyDetails = () => {
     const toy = useLoaderData();
     const navigate = useNavigate();
+
+    useSetTitle('Toy Details');
 
     return (
         <div className="w-11/12 mx-auto">

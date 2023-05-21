@@ -3,11 +3,14 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import useSetTitle from "../../hooks/useSetTitle";
 
 const AddToy = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { user } = useContext(AuthContext);
     const [categories, setCategories] = useState([]);
+
+    useSetTitle('Add Toy');
 
     useEffect(() => {
         fetch(`https://active-toy-server-mdashraful.vercel.app/toy-categories`)

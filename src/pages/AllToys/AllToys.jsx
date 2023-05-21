@@ -2,11 +2,14 @@
 /* eslint-disable react/jsx-key */
 import { Link, useLoaderData } from "react-router-dom";
 import { useState, useEffect } from 'react';
+import useSetTitle from "../../hooks/useSetTitle";
 
 const AllToys = () => {
     const data = useLoaderData();
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredData, setFilteredData] = useState([]);
+
+    useSetTitle('All Toys')
 
     useEffect(() => {
         filterData();
