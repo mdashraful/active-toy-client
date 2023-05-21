@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 const AddToy = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -30,7 +31,7 @@ const AddToy = () => {
                 console.log(data);
                 if (data.insertedId) {
                     event.target.reset();
-                    alert('Car Toy Added Successfully!')
+                    toast.success('Car Toy Added Successfully!')
                 }
             })
     };

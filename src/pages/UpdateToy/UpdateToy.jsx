@@ -2,6 +2,7 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 const UpdateToy = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -24,7 +25,7 @@ const UpdateToy = () => {
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
-                    alert("Updated Successfully");
+                    toast.success("Updated Successfully");
                     setToy(data);
                     navigate(-1);
                 }

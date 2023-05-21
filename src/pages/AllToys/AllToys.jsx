@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-key */
 import { Link, useLoaderData } from "react-router-dom";
 import { useState, useEffect } from 'react';
